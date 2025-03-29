@@ -1,11 +1,18 @@
 import pytest
-from adventure import EnchantedArtifact  # Assuming student's code is in adventure.py
+from adventure import selection_sort  # Assuming student's code is in adventure.py
 
-def test_enchanted_artifact_is_enchanted_staticmethod_true():
-    """Test EnchantedArtifact is_enchanted static method returns True for power level > 75."""
-    assert EnchantedArtifact.is_enchanted(80) == True, "EnchantedArtifact is_enchanted static method returned False for power level > 75"
-
-def test_enchanted_artifact_is_enchanted_staticmethod_false():
-    """Test EnchantedArtifact is_enchanted static method returns False for power level <= 75."""
-    assert EnchantedArtifact.is_enchanted(75) == False, "EnchantedArtifact is_enchanted static method returned True for power level <= 75"
-    assert EnchantedArtifact.is_enchanted(50) == False, "EnchantedArtifact is_enchanted static method returned True for power level <= 75"
+# Test 7: Selection Sort - Original List Unchanged
+def test_selection_sort_does_not_modify_original_list():
+    """Tests that selection_sort returns a new sorted list and leaves the original unchanged."""
+    original_list = [3, 1, 4, 2]
+    original_copy = original_list[:] # Create a shallow copy for comparison
+    
+    # Call the function
+    sorted_list = selection_sort(original_list)
+    
+    # Assert the returned list is sorted (optional, covered by other tests)
+    assert sorted_list == [1, 2, 3, 4] 
+    # Assert the original list remains unchanged
+    assert original_list == original_copy
+    # Also check that the returned list is a different object (new list)
+    assert id(original_list) != id(sorted_list)
