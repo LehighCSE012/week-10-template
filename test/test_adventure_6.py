@@ -1,31 +1,12 @@
+# test_temple_explorer.py
 import pytest
-from adventure import Elf, Character  # Assuming student's code is in adventure.py
+from adventure import linear_search, binary_search, selection_sort
 
-def test_elf_class_exists():
-    """Test that the Elf class is defined."""
-    assert "Elf" in globals(), "Elf class not defined"
-
-def test_elf_inherits_from_character():
-    """Test that Elf class inherits from Character."""
-    assert issubclass(Elf, Character), "Elf class does not inherit from Character"
-
-def test_elf_constructor():
-    """Test Elf constructor initializes attributes correctly."""
-    elf = Elf(name="TestElf")
-    assert elf.name == "TestElf", "Elf name not initialized correctly"
-    assert elf.health == 100, "Elf health not initialized to default correctly"
-    assert elf.attack_power == 25, "Elf attack_power not initialized to default correctly"
-
-def test_elf_special_ability():
-    """Test Elf special_ability method returns correct string."""
-    elf = Elf(name="TestElf")
-    ability_desc = elf.special_ability()
-    assert ability_desc == "Elven Agility: Dodges the next attack completely.", "Elf special_ability returned incorrect string"
-
-def test_elf_take_damage():
-    """Test Elf take_damage method reduces health correctly."""
-    elf = Elf(name="DamageElf")
-    elf.take_damage(25)
-    assert elf.health == 75, "Elf health not reduced correctly"
-    elf.take_damage(120)  # Should not go below zero
-    assert elf.health == 0, "Elf health went below zero"
+# Test 3: Binary Search - Target Found (Middle)
+def test_binary_search_finds_target_in_sorted_list():
+    """Tests if binary_search returns the correct index for a target in a sorted list."""
+    # IMPORTANT: Input list MUST be sorted for binary_search
+    scroll_ids = [101, 153, 244, 512, 842, 1024, 1500]
+    target = 842
+    expected_index = 4
+    assert binary_search(scroll_ids, target) == expected_index
